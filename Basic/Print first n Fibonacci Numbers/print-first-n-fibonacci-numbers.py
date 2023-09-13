@@ -13,7 +13,6 @@ class Solution:
             i = j
             j = z
         return lis
-            
 
 
 #{ 
