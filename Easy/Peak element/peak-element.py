@@ -3,17 +3,25 @@
 class Solution:   
     def peakElement(self,arr, n):
         # Code here
-        if(n==1):
+        if(n==0 or n ==1):
             return 0
-        elif(arr[0]>arr[1]):
+        elif(arr[0]>=arr[1]):
             return 0
-        elif(arr[n-1]>arr[n-2]):
+        elif(arr[n-1]>=arr[n-2]):
             return n-1
-        else:
-            for i in range(1,n-1):
-                if(arr[i]>=arr[i-1]) and (arr[i]>=arr[i+1]):
-                    return i
-        return 0
+        
+            
+        start,end = 0,n-1
+        while(start<=end):
+            mid = (start + end)//2
+            if(arr[mid]>=arr[mid+1] and arr[mid]>=arr[mid-1]):
+                return mid
+            elif(arr[mid-1]>arr[mid]):
+                end = mid - 1
+            else:
+                start = mid + 1
+                
+            
 
 
 
