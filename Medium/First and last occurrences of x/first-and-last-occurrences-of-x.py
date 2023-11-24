@@ -1,52 +1,68 @@
 #User function Template for python3
-def firstoccurence(arr,n,x):
-    if(n == 0):
-        return 0
-    start,end = 0,n-1
-    while(start<=end):
-        mid = (start + end)//2
-        if(arr[mid]>x):
-            end = mid - 1
-        elif(arr[mid]<x):
-            start = mid + 1
-        else:
-            if(mid == 0 or arr[mid] == x and arr[mid-1] != x):
-                return mid
-            else:
-                end = mid - 1
+
+
+class Solution:
+    def firstoccurence(self,arr,n,x):
+        
+        low,high = 0,n -1
+        
+        while(low<=high):
+            mid = (low + high)//2
             
-def lastoccurence(arr,n,x):
-    if(n == 0):
-        return 0
-    start,end = 0, n-1
-    while(start<=end):
-        mid = (start + end)//2
-        if(arr[mid]>x):
-            end = mid -1
-        elif(arr[mid]<x):
-            start = mid + 1
-        else:
-            if(mid == n - 1 or arr[mid] == x and arr[mid+1] != x):
+            if(arr[mid] == x and (mid == 0 or arr[mid - 1] != x)):
                 return mid
+                
+            elif(mid == 0 or arr[mid - 1] == x):
+                high = mid - 1
+                
             else:
-                start = mid + 1
-
-
-def find(arr,n,x):
-    # code here
-    
-    i = firstoccurence(arr,n,x)
-    j = lastoccurence(arr,n,x)
-    
-    if(i == None or j == None):
-        return -1,-1
-    return i,j
-    
-    
-    
-
-    
-
+                if(arr[mid] < x):
+                    low = mid + 1
+                    
+                else:
+                    high = mid - 1
+                    
+        return -1
+                
+    def lastoccurence(self,arr,n,x):
+        
+        low,high = 0,n - 1
+        
+        while(low<=high):
+            mid = (low + high)//2
+            
+            if(arr[mid] == x and (mid == n - 1 or arr[mid + 1] != x)):
+                return mid
+                
+            elif(mid == n - 1 or arr[mid + 1] == x):
+                low = mid + 1
+                
+            else:
+                if(arr[mid] < x):
+                    low = mid + 1
+                    
+                else:
+                    high = mid - 1
+                    
+        return -1 
+        
+        
+    def find(self, arr, n, x):
+        
+        # code here
+        #edge case
+        if(arr[0] == x and arr[n - 1] == x):
+            return [0,n-1]
+        
+        lis = []
+        first_index = self.firstoccurence(arr,n,x)
+        last_index = self.lastoccurence(arr,n,x)
+        
+        lis.append(first_index)
+        lis.append(last_index)
+        
+        return lis
+        
 
 
 #{ 
@@ -57,6 +73,7 @@ for _ in range(0,t):
     n=l[0]
     x=l[1]
     arr=list(map(int,input().split()))
-    ans=find(arr,n,x)
+    ob = Solution()
+    ans=ob.find(arr,n,x)
     print(*ans)
 # } Driver Code Ends
