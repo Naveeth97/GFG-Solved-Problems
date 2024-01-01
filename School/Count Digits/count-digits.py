@@ -1,20 +1,20 @@
 #User function Template for python3
 
-
 class Solution:
     def evenlyDivides (self, N):
         # code here
-        num, count = N, 0
-        if(len(str(num)) == 1):
-            return 1
-        while(num != 0):
-            r = num %10
-            if r>0 and N%r==0:
-                count +=1
-            num//=10
-    
+        count = 0
+        temp = N
+        while(temp>0):
+            dig = temp%10
+            if(dig == 0):
+                temp//=10
+                continue
+            if(N%dig == 0):
+                count+=1
+            temp//=10
+                
         return count
-        
         
         
 
