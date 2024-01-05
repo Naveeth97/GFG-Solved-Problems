@@ -3,13 +3,15 @@
 class Solution:
     def trailingZeroes(self, N):
     	#code here 
-    	count = 0
-    	if(N<4):
+    	
+    	if(N<5):
     	    return 0
-    	i = 5
-    	while(N/i>=1):
-    	    count += int(N/i)
-    	    i*=5
+    	
+    	count = 0
+    	while(N>1):
+    	    count += (N//5)
+    	    N//=5
+    	    
     	return count
 
 
