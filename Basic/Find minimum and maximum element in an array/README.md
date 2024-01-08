@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1?page=4&sortBy=submissions">Find minimum and maximum element in an array</a></h2><h3>Difficulty Level : Basic</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given an array<strong> A</strong> of size <strong>N</strong> of integers. Your task is to find the <strong>minimum and maximum </strong>elements in the&nbsp;array.</span></p>
+<h2><a href="https://www.geeksforgeeks.org/problems/find-minimum-and-maximum-element-in-an-array4428/1">Find minimum and maximum element in an array</a></h2><h3>Difficulty Level : Basic</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given an array<strong> A</strong> of size <strong>N</strong> of integers. Your task is to find the <strong>minimum and maximum </strong>elements in the&nbsp;array.</span></p>
 <p>&nbsp;</p>
 <p><span style="font-size: 18px;"><strong>Example 1:</strong></span></p>
 <pre><span style="font-size: 18px;"><strong>Input:</strong>
