@@ -1,13 +1,14 @@
 #User function Template for python3
 
 def largest( arr, n):
-    maxi = arr[0]
-    for i in arr:
-        if(i>=maxi):
-            maxi = i
-    return maxi
     
-
+    largest = 0
+    for i in arr:
+        if(i>largest):
+            largest = i
+            
+    return largest
+    
 
 
 
