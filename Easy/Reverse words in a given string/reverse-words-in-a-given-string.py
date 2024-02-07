@@ -2,19 +2,43 @@
 
 class Solution:
     
+    def dot(self, lis):
+        
+        str =""
+        
+        for i in lis:
+            
+            str = str + i + "."
+            
+        return str[0:len(str) - 1]
+    
     #Function to reverse words in a given string.
     def reverseWords(self,S):
         # code here 
-        arr = S.split('.')
-        i = len(arr) - 1
-        res = list()
-        while(i>=0):
-            res.append(arr[i])
-            i-=1
-        res = '.'.join(res)
-        return res
+        
+        lis = []
+        temp = ""
+        
+        
+        for i in range(len(S)):
             
+            ch = S[i]
             
+            if(ch == "."):
+                
+                if(temp != ""):
+                    
+                   lis.insert(0, temp)
+                   
+                temp = ""
+                
+            else:
+                temp += ch
+                
+        if(len(temp) > 0):
+            lis.insert(0, temp)
+                
+        return self.dot(lis)
 
 
 #{ 
