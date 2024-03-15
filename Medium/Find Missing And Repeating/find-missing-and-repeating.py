@@ -21,14 +21,17 @@ class Solution:
         
         val2 = val2//val1
         
-        repeating = (val1 + val2)//2
-        missing = repeating - val1
+        missing = (val1 + val2)//2
+        repeating = missing - val1
         
-        return [missing,repeating]
-        
-        
+        return [repeating,missing]
         
         
+        
+        
+
+
+
 
 
 #{ 
