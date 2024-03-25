@@ -10,7 +10,11 @@ class Solution:
             sums = sums + i
         return (sum - sums)
             
-            
+
+
+
+
+
 
 
 
