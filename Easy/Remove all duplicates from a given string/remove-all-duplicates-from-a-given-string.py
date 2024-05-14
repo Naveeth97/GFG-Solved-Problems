@@ -1,20 +1,23 @@
 #User function Template for python3
 class Solution:
 
-	
-	def removeDuplicates(self,str):
-	    # code here
-	    maps = {}
-	    res = ''
-	    
-	    for i in str:
-	
-	        if(i not in maps):
-	            res += i
-	            maps[i] = 1
-	   
-	        
-	    return res
+    
+    def removeDuplicates(self,str):
+        # code here
+        maps = {}
+        res = ''
+        
+        for i in str:
+    
+            if(i not in maps):
+                res += i
+                maps[i] = 1
+       
+            
+        return res
+
+
+
 
 
 #{ 
