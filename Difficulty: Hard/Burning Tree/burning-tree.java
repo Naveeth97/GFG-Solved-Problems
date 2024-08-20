@@ -127,11 +127,11 @@ class Solution
     	}
     }*/
     
-    static Node mapsParent(Node root, Map<Node, Node> markParents, int target) {
+    static Node markParents(Map<Node, Node> parentNode, Node root, int target) {
         
         Queue<Node> queue = new LinkedList<>();
-        
         queue.add(root);
+        
         Node start = null;
         
         while (!queue.isEmpty()) {
@@ -141,37 +141,41 @@ class Solution
             if (temp.data == target) start = temp;
             
             if (temp.left != null) {
+                
                 queue.add(temp.left);
-                markParents.put(temp.left, temp);
+                parentNode.put(temp.left, temp);
             }
             
             if (temp.right != null) {
+                
                 queue.add(temp.right);
-                markParents.put(temp.right, temp);
+                parentNode.put(temp.right, temp);
             }
         }
-        
         return start;
     }
     
     public static int minTime(Node root, int target) 
     {
         // Your code goes here
-        Map<Node, Node> markParents = new HashMap<>();
-        Node start =  mapsParent(root, markParents, target);
+        Map<Node, Node> parentNode = new HashMap<>();
         
-        Map<Node, Boolean> visited = new HashMap<>();
-        visited.put(start, true);
+        Node targets = markParents(parentNode, root, target);
         
         Queue<Node> queue = new LinkedList<>();
-        queue.add(start);
         
-        int count  = 0;
+        queue.add(targets);
+        
+        Map<Node, Node> visited = new HashMap<>();
+        
+        visited.put(targets, targets);
+        
+        int time = 0;
         
         while (!queue.isEmpty()) {
             
             int size = queue.size();
-            int fl = 0;
+            int encounter = 0;
             
             for (int i = 0; i < size; i++) {
                 
@@ -180,27 +184,31 @@ class Solution
                 if (current.left != null && visited.get(current.left) == null) {
                     
                     queue.add(current.left);
-                    visited.put(current.left, true);
-                    fl = 1;
-                    
+                    visited.put(current, current.left);
+                    encounter = 1;
                 }
                 
                 if (current.right != null && visited.get(current.right) == null) {
                     
                     queue.add(current.right);
-                    visited.put(current.right, true);
-                    fl = 1;
+                    visited.put(current, current.right);
+                    encounter = 1;
                 }
                 
-                if (markParents.get(current) != null && visited.get(markParents.get(current)) == null) {
-                    queue.add(markParents.get(current));
-                    visited.put(markParents.get(current), true);
-                    fl = 1;
+                if (parentNode.get(current) != null && visited.get(parentNode.get(current)) == null) {
+                    
+                    queue.add(parentNode.get(current));
+                    visited.put(parentNode.get(current), current);
+                    encounter = 1;
                 }
             }
-            if (fl == 1) count++;
+            
+            if (encounter == 1) {
+                time++;
+            }
+            
         }
         
-        return count;
+        return time;
     }
 }
