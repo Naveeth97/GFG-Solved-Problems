@@ -17,20 +17,19 @@ class Solution:
     def posOfRightMostDiffBit(self,m,n):
         #Your code here
         ans = 0
-        
-        if m == n:
-            return -1
             
-        while m > 0 or n > 0:
+        goal = m ^ n
+            
+        while goal > 0:
             
             ans += 1
-            if (m & 1) != (n & 1):
-                break
-                
-            m >>= 1
-            n >>= 1
+            if goal & 1:
+                return ans
             
-        return ans
+            goal >>= 1
+        
+            
+        return -1
 
 #{ 
  # Driver Code Starts.
