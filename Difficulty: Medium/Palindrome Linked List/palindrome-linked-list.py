@@ -21,9 +21,6 @@ class Solution:
     def isPalindrome(self, head):
         #code here
         
-        if (head.next == None):
-            return True
-            
         lis = []
         
         temp = head
@@ -31,21 +28,18 @@ class Solution:
         while temp != None:
             
             lis.append(temp.data)
-            
-            temp = temp.next
+            temp  = temp.next
             
         temp = head
         
         while temp != None:
             
-            if (lis[-1] != temp.data):
-                
+            if lis[-1] != temp.data:
                 return False
             
-            lis.pop()
-                
+            lis.pop()    
             temp = temp.next
-                
+            
         return True
 
 
