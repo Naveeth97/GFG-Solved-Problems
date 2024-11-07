@@ -32,8 +32,8 @@ class Solution:
                 
                 current_sum = 0
                 
-        if len(ans) == 2:
-            return ans
+        # if len(ans) == 2:
+        #     return ans
             
         return [-1, -1]
                 
