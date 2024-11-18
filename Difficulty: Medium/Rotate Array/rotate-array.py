@@ -1,28 +1,27 @@
 #User function Template for python3
-import math
+
 class Solution:
     #Function to rotate an array by d elements in counter-clockwise direction. 
-
-    def rotateArr(self,A,D):
+    def rotateArr(self, arr, d):
         #Your code here
-        N = len(A)
-        D = D%N
-        loop = math.gcd(D,N)
-        for i in range(loop):
-            j = i
-            temp = A[i]
-            while 1:
-                k = j+D
-                if(k>=N):
-                    k = k - N
-                if(k == i):
-                    break
-                A[j] = A[k]
-                j = k
-            A[j] = temp
-        return A
-
-
+        
+        d = d % len(arr)
+        
+        self.swap(arr, 0, d - 1)
+        self.swap(arr, d, len(arr) - 1)
+        self.swap(arr, 0, len(arr) - 1)
+        
+    
+    def swap(self, arr, fir, lst):
+        
+        while fir < lst:
+            
+            arr[fir] ^= arr[lst]
+            arr[lst] ^= arr[fir]
+            arr[fir] ^= arr[lst]
+            fir += 1
+            lst -= 1
+        
 
 
 #{ 
@@ -48,6 +47,8 @@ def main():
         print()
 
         T -= 1
+
+        print("~")
 
 
 if __name__ == "__main__":
