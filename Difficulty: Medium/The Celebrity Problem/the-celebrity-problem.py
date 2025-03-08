@@ -1,27 +1,24 @@
 class Solution:
     def celebrity(self, mat):
         # code here
-        celebrity = -1
         
         for i in range(len(mat)):
             
-            count = 0
+            cnt = 0
             
-            for j in range(len(mat[0])):
+            for j in range(len(mat[i])):
                 
                 if i == j:
                     continue
                 
-                if (mat[i][j] == 1):
-                    break
-                
-                if mat[i][j] == 0 and mat[j][i] == 1:
-                    count += 1
+                if mat[j][i] == 1 and mat[i][j] == 0:
+                    cnt += 1
                     
-            if count == len(mat[0]) - 1:
-                celebrity = i
-                
-        return celebrity
+            if cnt == len(mat) - 1:
+                return i
+                    
+        return -1
+
 
 #{ 
  # Driver Code Starts
@@ -36,5 +33,6 @@ if __name__ == "__main__":
 
         ob = Solution()
         print(ob.celebrity(M))
+        print("~")
 
 # } Driver Code Ends
