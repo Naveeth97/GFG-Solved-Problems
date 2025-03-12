@@ -1,22 +1,16 @@
-#User function Template for python3
-
 class Solution:
-    ##Complete this function
-    #Function to find the sum of contiguous subarray with maximum sum.
-    def maxSubArraySum(self,arr):
-        ##Your code here
+    def maxSubArraySum(self, arr):
+        # Your code here
         
-        result = -(1 << 31)
-        sum = 0
+        maxEnd = arr[0]
+        maxSoFar = arr[0]
         
-        for i in range(len(arr)):
+        for i in range(1, len(arr)):
             
-            sum = max(sum + arr[i], arr[i])
-            result = max(result, sum)
+            maxEnd = max(arr[i], maxEnd + arr[i])
+            maxSoFar = max(maxSoFar, maxEnd)
             
-        return result
-        
-
+        return maxSoFar
 
 #{ 
  # Driver Code Starts
@@ -34,7 +28,7 @@ def main():
         ob = Solution()
 
         print(ob.maxSubArraySum(arr))
-
+        print("~")
         T -= 1
 
 
