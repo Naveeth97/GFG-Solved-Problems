@@ -1,63 +1,43 @@
 class Solution:
-    #User function Template for python3
-    #Function to count inversions in the array.
+    
     def inversionCount(self, arr):
-        # Your Code Here
-        
-        return self.mergeSort(arr, 0, len(arr) - 1)
-        
-    def mergeSort(self, arr, low, high):
-        
-        cnt = 0
-        
-        if low >= high:
-            return cnt
-        
-        mid = (low + high) >> 1
-        cnt += self.mergeSort(arr, low, mid)
-        cnt += self.mergeSort(arr, mid + 1, high)
-        cnt += self.merge(arr, low, mid, high)
-        
-        return cnt
-        
-    def merge(self, arr, low, mid, high):
-        
-        left = low
-        right = mid + 1
-        cnt = 0
-        
-        lis = []
-        
-        while left <= mid and right <= high:
-            
-            if arr[left] <= arr[right]:
-                lis.append(arr[left])
-                left += 1
+        self.inversion_count = 0
+        self.mergeSort(arr, 0, len(arr) - 1)
+        return self.inversion_count
+
+    def mergeSort(self, arr, start, end):
+        if start == end:
+            return
+        mid = (start + end) // 2
+        self.mergeSort(arr, start, mid)
+        self.mergeSort(arr, mid + 1, end)
+        self.merge(arr, start, mid, end)
+
+    def merge(self, arr, start, mid, end):
+        i = start
+        j = mid + 1
+        sorted_lis = []
+
+        while i <= mid and j <= end:
+            if arr[i] <= arr[j]:
+                sorted_lis.append(arr[i])
+                i += 1
             else:
-                lis.append(arr[right])
-                cnt += (mid - left + 1)
-                right += 1
-        
-        while left <= mid:
-            
-            lis.append(arr[left])
-            left += 1
-            
-        while right <= high:
-            
-            lis.append(arr[right])
-            right += 1
-            
-        for i in range(low, high + 1):
-            
-            arr[i] = lis[i - low]
-            
-        return cnt
-        
-        
+                self.inversion_count += (mid - i + 1)
+                sorted_lis.append(arr[j])
+                j += 1
 
+        while i <= mid:
+            sorted_lis.append(arr[i])
+            i += 1
+        while j <= end:
+            sorted_lis.append(arr[j])
+            j += 1
 
+        for idx in range(len(sorted_lis)):
+            arr[start + idx] = sorted_lis[idx]
 
+                
 
 
 #{ 
