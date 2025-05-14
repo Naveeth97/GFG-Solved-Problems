@@ -51,6 +51,8 @@ public class LinkedList {
 
             Solution ob = new Solution();
             System.out.println(ob.countNodesinLoop(head));
+
+            System.out.println("~");
         }
     }
 }
@@ -58,48 +60,43 @@ public class LinkedList {
 // } Driver Code Ends
 
 
-
-
 /*
-
 class Node
 {
     int data;
     Node next;
     Node(int d) {data = d; next = null; }
 }
-
 */
 
-//Function should return the length of the loop in LL.
-
-class Solution
-{
-    //Function to find the length of a loop in the linked list.
-    static int countNodesinLoop(Node head)
-    {
-        //Add your code here.
-        Node slow = head;
-        Node fast = head;
-        int cnt = 0;
-
-        while(fast != null && fast.next != null){
+class Solution {
+    // Function to find the length of a loop in the linked list.
+    public int countNodesinLoop(Node head) {
+        // code here.
         
+        Node slow = head, fast = head;
+        
+        int count = 0;
+        
+        while (fast != null && fast.next != null) {
+            
             slow = slow.next;
-            fast =  fast.next.next;
-
-            if(slow == fast){
-                cnt++;
+            fast = fast.next.next;
+            
+            if (slow == fast) {
+                count++;
                 fast = fast.next;
-                while(slow != fast){
-                    cnt++;
+                while (slow != fast) {
+                    
                     fast = fast.next;
+                    count++;
                 }
-
-                return cnt;
+                break;
             }
         }
-
-        return 0;
+        
+        return count;
+        
+        
     }
 }
