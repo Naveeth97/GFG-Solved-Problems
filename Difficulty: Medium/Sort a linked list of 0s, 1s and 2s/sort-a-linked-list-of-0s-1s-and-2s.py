@@ -13,43 +13,56 @@ class Solution:
     def segregate(self, head):
         #code here
         
-        zeros = 0
-        ones = 0
-        twos = 0
+        zeroHead = Node(-1)
+        oneHead = Node(-1)
+        secHead = Node(-1)
         
-        temp = head
+        temp_zero = zeroHead
+        temp_one = oneHead
+        temp_sec = secHead
         
-        while temp != None:
+        while (head != None):
             
-            if temp.data == 0:
-                zeros += 1
-            elif temp.data == 1:
-                ones += 1
+            if head.data == 0:
+                
+                temp_zero.next = Node(head.data)
+                temp_zero = temp_zero.next
+            elif head.data == 1:
+                
+                temp_one.next = Node(head.data)
+                temp_one = temp_one.next
+                
             else:
-                twos += 1
-            
-            temp = temp.next
-            
-        temp = head
-            
-        while head != None:
-            
-            if zeros > 0:
-                head.data = 0
-                zeros -= 1
-            elif ones > 0:
-                head.data = 1
-                ones -= 1
-            else:
-                head.data = 2
-                twos -= 1
-            
+                
+                temp_sec.next = Node(head.data)
+                temp_sec = temp_sec.next
+                
             head = head.next
             
-        return temp
-            
+        zeroHead = zeroHead.next
+        oneHead = oneHead.next
+        secHead = secHead.next
         
+        if zeroHead != None:
             
+            if oneHead != None:
+                
+                temp_zero.next = oneHead
+                temp_one.next = secHead
+            else:
+                
+                temp_zero.next = secHead
+        else:
+            
+            if oneHead != None:
+                
+                temp_one.next = secHead
+                return oneHead
+            else:
+                
+                return secHead
+                
+        return zeroHead
     
 
 
